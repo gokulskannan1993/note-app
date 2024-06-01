@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-
 	"gokulskannan1993/note/note"
 )
 
@@ -10,19 +9,21 @@ func main() {
 
 	title, content := getNoteData()
 
-	userNote, err := note.Note(title, content)
+	userNote, err := note.New(title, content)
 
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 
+	userNote.Display()
+
 }
 
 func getNoteData() (string, string) {
-	title := getUserInput(("Note title"))
+	title := getUserInput(("Note title: "))
 
-	content := getUserInput("Note Content")
+	content := getUserInput("Note Content: ")
 
 	return title, content
 }
